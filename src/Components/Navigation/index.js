@@ -47,8 +47,8 @@ const NavigationNonAuth = () => (
     <ul class="navbar-nav">          <li class="nav-item active">
       <Link className="nav-link" to={ROUTES.LANDING}>Landing</Link>
     </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+      <li class="nav-item active">
+      <Link className="btn btn-outline-primary" to={ROUTES.SIGN_IN}>Sign In</Link>
  </li>
  </ul>
   </div>
