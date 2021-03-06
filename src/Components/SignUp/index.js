@@ -4,9 +4,10 @@ import { withFirebase, db } from "../Firebase";
 import * as ROUTES from "../constants/routes";
 
 const SignUpPage = () => (
-	<div>
-		<h1> Sign Up </h1> <SignUpForm />
-	</div>
+  <div>
+    <h1 class="text-center">SignUp</h1>
+    <SignUpForm />
+  </div>
 );
 
 const INITIAL_STATE = {
@@ -95,40 +96,68 @@ class SignUpFormBase extends Component {
 			username === "";
 
 		return (
-			<form onSubmit={this.onSubmit}>
-				<input
-					name="username"
-					value={username}
-					onChange={this.onChange}
-					type="text"
-					placeholder="Full Name"
-				/>
-				<input
-					name="email"
-					value={email}
-					onChange={this.onChange}
-					type="text"
-					placeholder="Email Address"
-				/>
-				<input
-					name="passwordOne"
-					value={passwordOne}
-					onChange={this.onChange}
-					type="password"
-					placeholder="Password"
-				/>
-				<input
-					name="passwordTwo"
-					value={passwordTwo}
-					onChange={this.onChange}
-					type="password"
-					placeholder="Confirm Password"
-				/>
-				<button disabled={isInvalid} type="submit">
-					Sign Up{" "}
-				</button>
-				{error && <p> {error.message} </p>}{" "}
-			</form>
+      <div className="container pt-3">
+      <form onSubmit={this.onSubmit}>
+        <br/>
+        <div className="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">
+          Name </label>
+          <br/>
+        <input
+          className="form-control form-control-lg"
+          name="username"
+          value={username}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Full Name"
+        />
+        </div>
+        <div className="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">
+          Email</label>
+          <br/>
+        <input
+          className="form-control form-control-lg"
+          name="email"
+          value={email}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Email Address"
+        />
+        </div>
+        <div className="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">
+          Password</label>
+          <br/>
+        <input
+          className="form-control form-control-lg"
+          name="passwordOne"
+          value={passwordOne}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Password"
+        />
+        </div>
+        <div className="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">
+          Confirm Password</label>
+          <br/>
+        <input
+          className="form-control form-control-lg"
+          name="passwordTwo"
+          value={passwordTwo}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Confirm Password"
+        />
+        </div>
+        <button className="btn btn btn-primary"disabled={isInvalid} type="submit">
+          Sign Up
+        </button>
+
+        {error && <p>{error.message}</p>}
+      </form>
+      </div>
 		);
 	}
 }
