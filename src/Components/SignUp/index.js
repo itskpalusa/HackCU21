@@ -76,6 +76,7 @@ class SignUpFormBase extends Component {
 					error,
 				});
 			});
+		this.props.history.push(ROUTES.HOME);
 	};
 
 	onChange = (event) => {
