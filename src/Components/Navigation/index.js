@@ -17,34 +17,41 @@ const Navigation = () => (
 );
 
 const NavigationAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">TimeTrack</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">          <li class="nav-item active">
+      <Link className="nav-link"  to={ROUTES.LANDING}>Landing</Link>
     </li>
-    <li>
-      <Link to={ROUTES.HOME}>Home</Link>
+      <li class="nav-item active">      <Link className="nav-link" to={ROUTES.HOME}>Home</Link>
     </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
+      <li class="nav-item active">      <Link className="nav-link" to={ROUTES.ACCOUNT}>Account</Link>
     </li>
-    <li>
-      <Link to={ROUTES.ADMIN}>Admin</Link>
+
+      <li class="nav-item active">      <SignOutButton />
     </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
-);
+ </ul>
+  </div>
+</nav>);
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">TimeTrack</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">          <li class="nav-item active">
+      <Link className="nav-link" to={ROUTES.LANDING}>Landing</Link>
     </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
-);
+      <li class="nav-item active">
+      <Link className="btn btn-outline-primary" to={ROUTES.SIGN_IN}>Sign In</Link>
+ </li>
+ </ul>
+  </div>
+</nav>);
 
 export default Navigation;
