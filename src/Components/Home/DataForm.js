@@ -16,7 +16,7 @@ export default class DataForm extends Component{
 
     render(){
         return (
-            <div>
+            <div className="container" style={{paddingTop:"30px"}}>
                 <Button color='success' onClick={this.findToggleNew} className="mb-1" block>Create Event</Button>
                     <Modal isOpen={this.state.modalNew} toggle={this.findToggleNew}>
                         <ModalHeader toggle={this.findToggleNew}>Create Event</ModalHeader>
