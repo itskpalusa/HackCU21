@@ -139,6 +139,7 @@ export default class DataForm extends Component {
 		);
 	}
 
+
 	findToggleNew() {
 		this.setState({
 			modalNew: !this.state.modalNew,
