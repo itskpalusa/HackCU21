@@ -9,7 +9,7 @@ import * as ROUTES from '../constants/routes';
 
 const SignInPage = () => (
   <div>
-    <h1>SignIn</h1>
+    <h1 class="text-center">Sign In</h1>
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
@@ -55,27 +55,42 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
+      <div className="container pt-5">
       <form onSubmit={this.onSubmit}>
+      <div className="mb-3">
+        <label for="exampleFormControlInput1" className="form-label">
+          Email </label>
+          <br/>
         <input
+          className="form-control form-control-lg"
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
+        </div>
+        <div className="mb-3">
+          <br/>
+        <label for="exampleFormControlInput1" className="form-label">
+          Name </label>
+          <br/>
         <input
+          className="form-control form-control-lg"
           name="password"
           value={password}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        </div>
+        <button className="btn btn btn-primary" disabled={isInvalid} type="submit">
           Sign In
         </button>
 
         {error && <p>{error.message}</p>}
       </form>
+      </div>
     );
   }
 }

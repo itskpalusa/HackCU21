@@ -5,7 +5,7 @@ import * as ROUTES from "../constants/routes";
 
 const SignUpPage = () => (
   <div>
-    <h1 class="text-center">SignUp</h1>
+    <h1 class="text-center">Sign Up</h1>
     <SignUpForm />
   </div>
 );
@@ -163,9 +163,9 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-	<p>
-		Don 't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>{" "}
-	</p>
+  <p class="container">
+    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+  </p>
 );
 
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));
