@@ -1,5 +1,7 @@
-import React from "react";
-import DataForm from "./DataForm";
+import React, {Component} from 'react';
+import {Button, InputGroup, InputGroupAddon, InputGroupText, Input, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import DataForm from './DataForm'
+
 
 import { withAuthorization } from "../Session";
 import Table from "./Table";
@@ -15,6 +17,6 @@ const HomePage = () => (
 	</div>
 );
 
-const condition = (authUser) => !!authUser;
+const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(HomePage);
