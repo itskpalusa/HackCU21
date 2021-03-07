@@ -55,7 +55,7 @@ export default class Table extends Component {
 
 		return (
 			<div>
-				<h2>Table</h2>
+				<h2>Events</h2>
 				<table class="table table-striped">
 					<thead>
 						<tr>
