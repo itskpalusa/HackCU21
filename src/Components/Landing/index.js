@@ -25,7 +25,7 @@ const Landing = () => (
         Keep you accountable &nbsp; &nbsp; 
       </li>
       <li>
-        Achieve work ife balance
+        Achieve work ife balance 
       </li>
     </ul>
   </div>
