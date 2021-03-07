@@ -1,73 +1,143 @@
-import React, {Component} from 'react';
-import {Button, InputGroup, InputGroupAddon, InputGroupText, Input, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import React, { Component } from "react";
+import {
+	Button,
+	InputGroup,
+	InputGroupAddon,
+	InputGroupText,
+	Input,
+	Modal,
+	ModalHeader,
+	ModalBody,
+	ModalFooter,
+} from "reactstrap";
+import { db } from "../Firebase";
+import firebase from "firebase";
+export default class DataForm extends Component {
+	constructor(props) {
+		super(props);
+		this.findToggleNew = this.findToggleNew.bind(this);
+		this.functionTakingMatchInput = this.functionTakingMatchInput.bind(this);
+		this.state = {
+			eventName: "",
+			startTime: "",
+			endTime: "",
+			matchName: "",
+			modalNew: false,
+		};
+		this.handleNameChange = this.handleNameChange.bind(this);
+		this.handleStartChange = this.handleStartChange.bind(this);
+		this.handleEndChange = this.handleEndChange.bind(this);
 
+		this.onSubmit = this.onSubmit.bind(this);
+	}
+	handleNameChange(event) {
+		console.log(event.target.value);
+		this.setState({ eventName: event.target.value });
+	}
 
-export default class DataForm extends Component{
-    constructor(props){
-        super(props);
-        this.findToggleNew = this.findToggleNew.bind(this);
+	handleStartChange(event) {
+		console.log(event.target.value);
+		this.setState({ startTime: event.target.value });
+	}
 
-        this.state = {
-            matchName:"",
-            modalNew: false,
-        }
-    }
+	handleEndChange(event) {
+		console.log(event.target.value);
+		this.setState({ endTime: event.target.value });
+	}
 
+	onSubmit(event) {
+		event.preventDefault();
+		const { eventName, startTime, endTime } = this.state;
+		var user = firebase.auth().currentUser;
+		console.log(user.uid);
+		console.log(eventName);
+		console.log(startTime);
+		console.log(endTime);
+		alert("A event was submitted: " + eventName);
+		db.collection("users")
+			.doc(user.uid)
+			.collection("events")
+			.add({
+				eventName: eventName,
+				startTime: startTime,
+				endTime: endTime,
+			})
+			.then(() => {
+				console.log("Document successfully written!");
+			})
+			.catch((error) => {
+				console.error("Error writing document: ", error);
+			});
+	}
 
-    render(){
-        return (
-            <div>
-                <Button color='success' onClick={this.findToggleNew} className="mb-1" block>Create Event</Button>
-                    <Modal isOpen={this.state.modalNew} toggle={this.findToggleNew}>
-                        <ModalHeader toggle={this.findToggleNew}>Create Event</ModalHeader>
-                        <ModalBody>
-                            {/* InputGroup here */}
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">
-                                    <InputGroupText>Create</InputGroupText>
-                                </InputGroupAddon>
-                                    <Input
-                                        placeholder="Event Name"
-                                        onChange={this.functionTakingMatchInput}
-                                    />
-                                
-                            </InputGroup>
-                                <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Start</InputGroupText>
-                            </InputGroupAddon>
-                                <Input
-                                    placeholder="Enter Start Time"
-                                    onChange={this.functionTakingMatchInput}
-                                />
-                            </InputGroup>
-                            <InputGroup>
-                            <InputGroupAddon addonType="prepend">
-                                <InputGroupText>Stop      </InputGroupText>
-                            </InputGroupAddon>
-                                <Input
-                                    placeholder="Enter Stop Time"
-                                    onChange={this.functionTakingMatchInput}
-                                />
-                        </InputGroup>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button onClick={this.fetchFind} color="success">Add</Button>
-                            <Button color='secondary' onClick={this.findToggleNew}>Cancel</Button>
-                        </ModalFooter>
-                    </Modal>
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div>
+				<Button
+					color="success"
+					onClick={this.findToggleNew}
+					className="mb-1"
+					block
+				>
+					Create Event
+				</Button>
+				<Modal isOpen={this.state.modalNew} toggle={this.findToggleNew}>
+					<ModalHeader toggle={this.findToggleNew}>Create Event</ModalHeader>
+					<ModalBody>
+						<form onSubmit={this.onSubmit}>
+							{" "}
+							<InputGroup>
+								<InputGroupAddon addonType="prepend">
+									<InputGroupText>Create</InputGroupText>
+								</InputGroupAddon>
+								<Input
+									placeholder="Event Name"
+									value={this.eventName}
+									onChange={this.handleNameChange}
+								/>
+							</InputGroup>
+							<InputGroup>
+								<InputGroupAddon addonType="prepend">
+									<InputGroupText>Start</InputGroupText>
+								</InputGroupAddon>
+								<Input
+									placeholder="Enter Start Time"
+									value={this.startTime}
+									onChange={this.handleStartChange}
+								/>
+							</InputGroup>
+							<InputGroup>
+								<InputGroupAddon addonType="prepend">
+									<InputGroupText>Stop </InputGroupText>
+								</InputGroupAddon>
+								<Input
+									placeholder="Enter Stop Time"
+									value={this.endTime}
+									onChange={this.handleEndChange}
+								/>
+							</InputGroup>
+						</form>
+					</ModalBody>
+					<ModalFooter>
+						<Button onClick={this.onSubmit} color="success">
+							Add
+						</Button>
+						<Button color="secondary" onClick={this.findToggleNew}>
+							Cancel
+						</Button>
+					</ModalFooter>
+				</Modal>
+			</div>
+		);
+	}
 
-    findToggleNew() {
-        this.setState({
-            modalNew: !this.state.modalNew
-        });
-    }
+	findToggleNew() {
+		this.setState({
+			modalNew: !this.state.modalNew,
+		});
+	}
 
-    functionTakingMatchInput = (event) =>{
-        this.setState({matchName: event.target.value})
-    }
+	functionTakingMatchInput = (event) => {
+		this.setState({ matchName: event.target.value });
+	};
 }
-
