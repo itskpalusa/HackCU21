@@ -6,9 +6,11 @@ import Table from "./Table";
 const HomePage = () => (
 	<div className="container">
 		<div className="jumbotron">
-			<h1 className="display-4"> Home Page </h1> <p></p>
-			<DataForm />
-		</div>
+			<h1 className="display-4 text-center"> Home Page </h1>
+			<center>
+				<DataForm />
+			</center>
+		</div>{" "}
 		<br />
 		<hr />
 		<Table />
