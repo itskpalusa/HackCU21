@@ -155,4 +155,20 @@ export default class DataForm extends Component {
 			matchName: event.target.value,
 		});
 	};
+	
+	totalTime(startTime, endTime){
+		let eventLength;
+		let millisec = Math.abs(endTime - startTime);
+		let minutes = (millisec/(1000*60)).toFixed(1);
+		let hours = (millisec / (1000*60*60)).toFixed(1);
+
+		if(minutes < 60){
+			eventLength = minutes
+			console.log(eventLength + " minutes");
+		}
+		else{
+			eventLength = hours
+			console.log(eventLength + " hours");
+		}
+	};
 }
