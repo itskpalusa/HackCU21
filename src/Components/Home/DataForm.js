@@ -32,13 +32,30 @@ export default class DataForm extends Component{
                                     />
                                 
                             </InputGroup>
+                                <InputGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Start</InputGroupText>
+                            </InputGroupAddon>
+                                <Input
+                                    placeholder="Enter Start Time"
+                                    onChange={this.functionTakingMatchInput}
+                                />
+                            </InputGroup>
+                            <InputGroup>
+                            <InputGroupAddon addonType="prepend">
+                                <InputGroupText>Stop      </InputGroupText>
+                            </InputGroupAddon>
+                                <Input
+                                    placeholder="Enter Stop Time"
+                                    onChange={this.functionTakingMatchInput}
+                                />
+                        </InputGroup>
                         </ModalBody>
                         <ModalFooter>
                             <Button onClick={this.fetchFind} color="success">Add</Button>
                             <Button color='secondary' onClick={this.findToggleNew}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
-
             </div>
         );
     }
