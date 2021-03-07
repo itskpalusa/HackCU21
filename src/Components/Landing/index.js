@@ -29,10 +29,6 @@ const Landing = () => (
       </li>
     </ul>
   </div>
-
-  <div>
-    <p> Insert pic of home page</p>
-  </div>
   </div>
 );
 

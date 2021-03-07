@@ -61,7 +61,7 @@ export default class DataForm extends Component {
 		console.log(eventName);
 		console.log(startTime);
 		console.log(endTime);
-		alert("A event was submitted: " + eventName);
+		alert("An event was submitted: " + eventName);
 		db.collection("users")
 			.doc(user.uid)
 			.collection("events")
