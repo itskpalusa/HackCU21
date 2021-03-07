@@ -17,15 +17,17 @@ const Landing = () => (
     <p style={{textAlign: "center", fontSize: "20px"}}>
       TimeTrack will help you:
     </p>
-    <ul style={{textAlign: "center", listStylePosition: "inside" }}>
+    <ul class="glyphicon glyphicon-check"
+     style={{textAlign: "center",
+               listStylePosition: "inside"}}>
       <li>
-      Enhance productivity &nbsp; &nbsp; &nbsp; 
+      Enhance productivity &nbsp; &nbsp; &nbsp; &nbsp;
       </li>
       <li>
-        Keep you accountable &nbsp; &nbsp; 
+        Keep yourself accountable 
       </li>
       <li>
-        Achieve work ife balance 
+        Achieve work life balance &nbsp;
       </li>
     </ul>
   </div>
