@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { db } from "../Firebase";
 import firebase from "firebase";
+import DateTimePicker from "react-datetime-picker";
 export default class DataForm extends Component {
 	constructor(props) {
 		super(props);
@@ -23,6 +24,7 @@ export default class DataForm extends Component {
 			endTime: "",
 			matchName: "",
 			modalNew: false,
+			value: [new Date(), new Date()],
 		};
 		this.handleNameChange = this.handleNameChange.bind(this);
 		this.handleStartChange = this.handleStartChange.bind(this);
@@ -32,17 +34,23 @@ export default class DataForm extends Component {
 	}
 	handleNameChange(event) {
 		console.log(event.target.value);
-		this.setState({ eventName: event.target.value });
+		this.setState({
+			eventName: event.target.value,
+		});
 	}
 
 	handleStartChange(event) {
-		console.log(event.target.value);
-		this.setState({ startTime: event.target.value });
+		event.persist();
+		this.setState({
+			startTime: event.target.value,
+		});
 	}
 
 	handleEndChange(event) {
 		console.log(event.target.value);
-		this.setState({ endTime: event.target.value });
+		this.setState({
+			endTime: event.target.value,
+		});
 	}
 
 	onSubmit(event) {
@@ -79,54 +87,54 @@ export default class DataForm extends Component {
 					className="mb-1"
 					block
 				>
-					Create Event
-				</Button>
+					Create Event{" "}
+				</Button>{" "}
 				<Modal isOpen={this.state.modalNew} toggle={this.findToggleNew}>
-					<ModalHeader toggle={this.findToggleNew}>Create Event</ModalHeader>
+					<ModalHeader toggle={this.findToggleNew}> Create Event </ModalHeader>{" "}
 					<ModalBody>
 						<form onSubmit={this.onSubmit}>
 							{" "}
 							<InputGroup>
 								<InputGroupAddon addonType="prepend">
-									<InputGroupText>Create</InputGroupText>
-								</InputGroupAddon>
+									<InputGroupText> Create </InputGroupText>{" "}
+								</InputGroupAddon>{" "}
 								<Input
 									placeholder="Event Name"
 									value={this.eventName}
 									onChange={this.handleNameChange}
-								/>
-							</InputGroup>
+								/>{" "}
+							</InputGroup>{" "}
 							<InputGroup>
 								<InputGroupAddon addonType="prepend">
-									<InputGroupText>Start</InputGroupText>
-								</InputGroupAddon>
-								<Input
-									placeholder="Enter Start Time"
-									value={this.startTime}
-									onChange={this.handleStartChange}
+									<InputGroupText> Start </InputGroupText>{" "}
+								</InputGroupAddon>{" "}
+								<DateTimePicker
+									onChange={(startTime) =>
+										this.setState({ startTime: startTime })
+									}
+									value={this.state.startTime}
 								/>
-							</InputGroup>
+							</InputGroup>{" "}
 							<InputGroup>
 								<InputGroupAddon addonType="prepend">
-									<InputGroupText>Stop </InputGroupText>
-								</InputGroupAddon>
-								<Input
-									placeholder="Enter Stop Time"
-									value={this.endTime}
-									onChange={this.handleEndChange}
+									<InputGroupText> Stop </InputGroupText>{" "}
+								</InputGroupAddon>{" "}
+								<DateTimePicker
+									onChange={(endTime) => this.setState({ endTime: endTime })}
+									value={this.state.endTime}
 								/>
-							</InputGroup>
-						</form>
-					</ModalBody>
+							</InputGroup>{" "}
+						</form>{" "}
+					</ModalBody>{" "}
 					<ModalFooter>
 						<Button onClick={this.onSubmit} color="success">
-							Add
-						</Button>
+							Add{" "}
+						</Button>{" "}
 						<Button color="secondary" onClick={this.findToggleNew}>
-							Cancel
-						</Button>
-					</ModalFooter>
-				</Modal>
+							Cancel{" "}
+						</Button>{" "}
+					</ModalFooter>{" "}
+				</Modal>{" "}
 			</div>
 		);
 	}
@@ -138,6 +146,8 @@ export default class DataForm extends Component {
 	}
 
 	functionTakingMatchInput = (event) => {
-		this.setState({ matchName: event.target.value });
+		this.setState({
+			matchName: event.target.value,
+		});
 	};
 }
