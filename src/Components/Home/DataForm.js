@@ -80,15 +80,14 @@ export default class DataForm extends Component {
 
 	render() {
 		return (
-			<div>
-				<Button
+			<div className="container">
+				<button
 					color="success"
 					onClick={this.findToggleNew}
-					className="mb-1"
-					block
+					className="btn btn-success"
 				>
 					Create Event{" "}
-				</Button>{" "}
+				</button>{" "}
 				<Modal isOpen={this.state.modalNew} toggle={this.findToggleNew}>
 					<ModalHeader toggle={this.findToggleNew}> Create Event </ModalHeader>{" "}
 					<ModalBody>
@@ -110,19 +109,25 @@ export default class DataForm extends Component {
 								</InputGroupAddon>{" "}
 								<DateTimePicker
 									onChange={(startTime) =>
-										this.setState({ startTime: startTime })
+										this.setState({
+											startTime: startTime,
+										})
 									}
 									value={this.state.startTime}
-								/>
+								/>{" "}
 							</InputGroup>{" "}
 							<InputGroup>
 								<InputGroupAddon addonType="prepend">
 									<InputGroupText> Stop </InputGroupText>{" "}
 								</InputGroupAddon>{" "}
 								<DateTimePicker
-									onChange={(endTime) => this.setState({ endTime: endTime })}
+									onChange={(endTime) =>
+										this.setState({
+											endTime: endTime,
+										})
+									}
 									value={this.state.endTime}
-								/>
+								/>{" "}
 							</InputGroup>{" "}
 						</form>{" "}
 					</ModalBody>{" "}
@@ -138,7 +143,6 @@ export default class DataForm extends Component {
 			</div>
 		);
 	}
-
 
 	findToggleNew() {
 		this.setState({
